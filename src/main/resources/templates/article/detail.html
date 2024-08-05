@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layout/layout}">
+<section layout:fragment="content" class="section-prod-list">
+    <div class="container">
+        <div class="card-header">
+            게시글 상세
+        </div>
+
+        <ul class="list-group list-group-flush gap-2">
+            <li class="list-group-item">
+                <h1 th:text="${article.title}"></h1>
+            </li>
+            <li class="list-group-item">
+                <h1 th:text="${article.content}"></h1>
+            </li>
+            <li class="list-group-item">
+                <span>번호 :</span>
+                <h1 th:text="${article.id}"></h1>
+
+            </li>
+
+        </ul>
+        <div class="mt-6 flex justify-end space-x-4">
+            <a th:href="@{|/article/modify/${article.id}|}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">수정</a>
+            <form th:action="@{/article/delete/{id}(id=${article.id})}" method="post" class="inline">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">삭제</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+</html>
